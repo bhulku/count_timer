@@ -1,0 +1,19 @@
+<div id="counter" class="well" >10</div>
+
+<button type="button" class="btn" id="resetButton">Click Me</button>
+<br />
+<br />
+<div class="span4">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr><th>Clicked</th></tr>
+    </thead>
+    <tbody id="tableTimer">
+      <% @count_times.each do |count_time| %>
+        <tr>
+          <td><%= count_time.tick_time%></td>
+        </tr>  
+      <% end %>
+    </tbody>  
+  </table>
+</div>  

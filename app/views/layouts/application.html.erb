@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= content_for?(:title) ? yield(:title) : "Drinks Now" %></title>
+
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+     
+    <%= yield(:head) %>
+
+  </head>
+  <body>
+    <div id="wrap">
+      <header>
+        <%= render 'menu' %>
+      </header>
+      <div id="main" role="main">
+        <div class="container-fluid">
+          <div class="main-content">
+            <div class="row-fluid">
+              <div class="span12">
+                <%= yield %>
+              </div>
+            </div><!--! end of .row-fluid-->
+          </div><!--! end of .content -->
+        </div> <!--! end of .container -->
+      </div> <!--! end of #main -->
+      <div id="push"></div>
+    </div>  <!--! end of #wrap -->
+
+    <div id="footer">
+      <div class="container">
+        <%= yield :javascript %>
+
+        <p class="span2">&nbsp;</p>
+        <p class="copyright">&copy; 2013 <a href="http://courseit.in">Drinks Now</a> All Rights Reserved</p>
+      </div>
+    </div>
+
+  </body>
+</html>
+
+
