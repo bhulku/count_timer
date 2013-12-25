@@ -5,6 +5,7 @@ CountTimer::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   post "add_counter"=>"count_timers#add_counter"
+  get "add_name"=>"count_timers#add_name",:as=>"add_name"
   root 'count_timers#index'
 
   # Example of regular route:

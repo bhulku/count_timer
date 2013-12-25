@@ -17,7 +17,7 @@ CT = (function($, window, document, CountTimer){
       clickCount : function(){
         $("#resetButton").on("click",function(e){
           var tickTime = $("#counter").text();
-          $("#tableTimer").append("<tr><td>"+ tickTime+"</td></tr>");
+          // $("#tableTimer").append("<tr><td>"+ tickTime+"</td></tr>");
           CT.home.addCount(tickTime)
           clearInterval(CT.timer); 
           CT.home.initCounter(10);
@@ -32,7 +32,7 @@ CT = (function($, window, document, CountTimer){
           dataType:'json',          
         };
         $.ajax(ajaxOptions).success(function(response){
-
+           $("#tableTimer").append("<tr><td>"+ response.tick_time+"</td></tr>");
         });
       }
 

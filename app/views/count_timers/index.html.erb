@@ -3,17 +3,50 @@
 <button type="button" class="btn" id="resetButton">Click Me</button>
 <br />
 <br />
-<div class="span4">
-  <table class="table table-striped table-bordered">
-    <thead>
-      <tr><th>Clicked</th></tr>
-    </thead>
-    <tbody id="tableTimer">
-      <% @count_times.each do |count_time| %>
-        <tr>
-          <td><%= count_time.tick_time%></td>
-        </tr>  
-      <% end %>
-    </tbody>  
-  </table>
+<div class ="row-fluid">
+  <div class="span4">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr><th>Clicked</th></tr>
+      </thead>
+      <tbody id="tableTimer">
+        <% @count_times.each do |count_time| %>
+          <tr>
+            <td><%= count_time.tick_time%></td>
+          </tr>  
+        <% end %>
+      </tbody>  
+    </table>
+  </div>  
+
+  <div class="span8">
+    <%= form_tag(add_name_path,:id=>"add_name_form") do %>
+      <%= text_field_tag "name","",:id=>"input_name" %>
+      <%= submit_tag "Add name",:class=>"btn"%>
+    <% end %>  
+    <div id="display_name"></div>
+  </div>
 </div>  
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#add_name_form").on("submit",function(e){
+      var myName = $("#input_name").val();
+      $.ajax({
+        url : "/add_name",
+        data : $("#add_name_form").serialize(),
+        type: "GET",
+        dataType: "json",
+        success : function(response){
+          
+        },
+        error : function(xhr,status,err){
+          console.log(xhr)
+          console.log(status)
+          console.log(err)
+        }
+
+      })
+      return false;
+    })
+  })
+</script>
